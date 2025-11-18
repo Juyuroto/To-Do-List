@@ -1,0 +1,378 @@
+:root {
+  --background-color: #f5f7fa;
+  --secondary-color: #50e3c2;
+
+  --button-color: #7986cb;
+  --secondary-button-color: #5c6bc0;
+
+  --border-color: #c5cae9;
+  --secondary-border-color: #7986cb;
+
+  --text-color: white;
+  --secondary-text-color: #333;
+
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+}
+
+.todo-list {
+  background: var(--background-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 50, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.todo-list h1 {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.todo-list input[type="text"] {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.todo-list input[type="text"]:focus {
+  border-color: var(--secondary-border-color);
+  box-shadow: 0 0 5px #9fa8da;
+}
+
+.add-button {
+  background-color: var(--button-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: var(--secondary-button-color);
+  transform: translateY(-1.5px);
+}
+
+.todo-list ol {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.todo-list li {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+.todo-list li:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.todo-list .text {
+  flex: 1;
+  color: #333;
+}
+
+.delete-button,
+.move-button,
+.edit-button,
+.save-button,
+.cancel-button {
+  border: none;
+  background-color: transparent;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-button,
+.cancel-button {
+  color: #e57373;
+}
+
+.delete-button:hover,
+.cancel-button:hover {
+  color: #c62828;
+  transform: scale(1.05);
+}
+
+.move-button,
+.save-button {
+  color: #64b5f6;
+}
+
+.move-button:hover,
+.save-button:hover {
+  color: #1565c0;
+}
+
+.edit-button {
+  color: #9575cd;
+}
+
+.edit-button:hover {
+  color: #512da8;
+  transform: scale(1.05);
+}
+
+.update-button {
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.update-button:hover {
+  background-color: #00897b;
+  transform: translateY(-2px);
+}
+
+.modal-overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 999;
+  animation: fadeIn 0.25s ease;
+}
+
+.message-content {
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  text-align: center;
+  animation: fadeIn 0.25s ease;
+}
+
+.message-content p {
+  margin-bottom: 20px;
+  color: #444;
+  word-wrap: break-word;
+}
+
+.more-button {
+  color: var(--button-color);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-btn:hover {
+  background-color: var(--secondary-button-color);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PC */
+@media (min-width: 1000px) {
+
+  .todo-list {
+    max-width: 900px;
+    padding: 30px;
+    margin: 80px auto;
+  }
+
+  .todo-list h1 {
+    font-size: 2em;
+    margin-bottom: 25px;
+  }
+
+  .todo-list input[type="text"] {
+    width: 80%;
+    padding: 10px 14px;
+    font-size: 1em;
+  }
+
+  .add-button {
+    padding: 10px 16px;
+    margin-left: 10px;
+  }
+
+  .todo-list li {
+    margin-bottom: 12px;
+    padding: 12px 15px;
+  }
+
+  .todo-list .text {
+    padding-right: 10px;
+    font-size: 1em;
+  }
+
+  .delete-button,
+  .move-button,
+  .edit-button,
+  .save-button,
+  .cancel-button {
+    padding: 6px 10px;
+    margin-left: 5px;
+  }
+
+  .delete-button:hover {
+    background-color: #ffebee;
+  }
+
+  .move-button:hover {
+    background-color: #e3f2fd;
+  }
+
+  .edit-button:hover {
+    background-color: #ede7f6;
+  }
+
+  .update-button {
+    background-color: #4db6ac;
+  }
+
+  .update-button:hover {
+    background-color: #00897b;
+  }
+
+  .message-content {
+    padding: 20px 30px;
+    max-width: 600px;
+    width: 80%;
+  }
+
+  .message-content p {
+    margin-bottom: 15px;
+    font-size: 1em;
+  }
+
+  .logout-btn {
+    margin-top: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .modal-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .message-content {
+    max-width: 500px;
+    width: 100%;
+  }
+  
+}
+
+/* MOBILE */
+@media (max-width: 1000px) {
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .todo-list {
+    padding: 20px;
+    margin: 40px auto;
+  }
+
+  .todo-list h1 {
+    font-size: 1.5em;
+  }
+
+  .todo-list input[type="text"] {
+    width: 90%;
+    padding: 10px 14px;
+    font-size: 1em;
+  }
+
+  .add-button {
+    width: 90%;
+    padding: 10px 16px;
+    margin-top: 10px;
+  }
+
+  .todo-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding: 12px 15px;
+  }
+
+  .todo-list .text {
+    max-width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .delete-button,
+  .move-button,
+  .edit-button,
+  .save-button,
+  .cancel-button {
+    width: 100%;
+    padding: 6px 10px;
+    margin-top: 5px;
+  }
+
+  .move-button,
+  .box {
+    display: none;
+  }
+
+  .more-button {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .logout-btn {
+    width: 90%;
+    padding: 0.8rem 1rem;
+  }
+
+ .modal-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .message-content {
+    max-width: 400px;
+    width: 100%;
+  }
+}

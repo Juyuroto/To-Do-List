@@ -79,3 +79,116 @@ FRONT_PORT= ????
 # phpMyAdmin
 PMA_PORT= ????
 ```
+
+### Explication folder
+
+📂 backend/
+
+Contient tout le code du serveur, de l’API et de la base de données.
+
+📁 node_modules/
+
+Dépendances installées via npm install.
+(Ne doit jamais être modifié manuellement.)
+
+📁 src/
+
+Code source principal du backend.
+
+📁 config/
+
+Contient les fichiers de configuration, notamment la base de données.
+
+e-todo.sql
+Script SQL permettant d’initialiser ou recréer la base de données SQLite (tables, champs, etc.).
+
+📁 middleware/
+
+Dossier réservé aux middlewares Express (authentification, logs, validation…).
+(Le contenu dépend du projet.)
+
+📁 routes/
+
+Contient les routes Express de l’API, organisées par fonctionnalités.
+
+app.js
+
+Fichier qui configure l’application Express : middlewares, routes, connexion DB…
+C’est le cœur de la logique backend.
+
+dockerfile
+
+Fichier permettant de construire une image Docker du backend.
+Il décrit comment le serveur doit être installé et lancé dans un conteneur.
+
+index.js
+
+Point d’entrée du backend.
+C’est lui qui démarre le serveur (ex: app.listen(...)).
+
+package.json
+
+Liste les dépendances, scripts NPM, et métadonnées du backend.
+
+package-lock.json
+
+Fichier généré automatiquement par npm pour verrouiller les versions exactes des dépendances.
+
+📂 frontend/
+
+Contient le code de l’interface utilisateur.
+
+📁 node_modules/
+
+Dépendances du frontend installées via npm.
+
+📁 public/
+
+Dossier contenant les fichiers accessibles publiquement (images, icônes…).
+Servi directement par Vite.
+
+📁 src/
+
+Code source du frontend (JS, CSS, composants, logique de l'app…).
+
+.dockerignore
+
+Liste les fichiers à exclure lors de la création de l’image Docker du frontend.
+
+dockerfile
+
+Fichier Docker utilisé pour builder le frontend en production.
+
+eslint.config.js
+
+Configuration du linter ESLint pour assurer une qualité de code constante.
+
+index.html
+
+Page HTML principale du projet frontend (point d'entrée de l’interface).
+
+package.json
+
+Liste les dépendances, scripts et métadonnées du frontend.
+
+vite.config.js
+
+Configuration du bundler Vite (proxy, build, ports…).
+
+🛠️ Fichiers à la racine
+.env
+
+Fichier contenant les variables d’environnement (ports, secrets, config DB…).
+Non versionné pour la sécurité.
+
+.gitignore
+
+Indique quels fichiers Git doit ignorer (node_modules/, .env, etc.).
+
+docker-compose.yml
+
+Fichier permettant de lancer tous les services (backend, frontend, base de données) en une seule commande avec Docker.
+
+README.md
+
+Documentation du projet.

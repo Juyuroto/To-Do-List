@@ -1,14 +1,45 @@
 # To-Do-List
 ### Archi code
-{% filetree %}
-- astro.config.mjs
-- package.json
-- src
-  - components
-    - Header.astro
-    - Title.astro
-  - pages/
-{% /filetree %}
+```markdown
+TO-DO-LIST/
+├─ backend/
+│  ├─ node_modules/
+│  ├─ src/
+│  │  ├─ config/
+│  │  ├─ middleware/
+│  │  ├─ routes/
+│  │  ├─ app.js
+│  │  └─ index.js
+│  ├─ package.json
+│  ├─ package-lock.json
+│  └─ Dockerfile
+├─ frontend/
+│  ├─ node_modules/
+│  ├─ public/
+│  │  └─ logo.svg
+│  ├─ src/
+│  │  ├─ Context/
+│  │  │  └─ AuthContext.jsx
+│  │  ├─ log/
+│  │  │  ├─ App.js
+│  │  │  ├─ HomePage.jsx
+│  │  │  ├─ Login.css
+│  │  │  ├─ Login.jsx
+│  │  │  └─ signup.jsx
+│  │  ├─ App.jsx
+│  │  ├─ main.jsx
+│  │  ├─ ToDoList.jsx
+│  │  └─ index.css
+│  ├─ package.json
+│  ├─ dockerfile
+│  ├─ vite.config.js
+│  ├─ index.html
+│  └─ eslint.config.js
+├─ .env
+├─ .gitignore
+├─ docker-compose.yml
+└─ README.md
+```
 
 ### Installation
 #### Dans le folder backend

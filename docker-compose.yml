@@ -1,58 +1,17 @@
-version: "3.9"
 services:
-  db:
-    image: mysql:8.0
-    container_name: mysql
+  database:
+    container_name: database
+    image: postgres:12.8
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
+      - POSTGRES_USER=${PostgreUser}
+      - POSTGRES_PASSWORD=${PostgrePassword}
+      - POSTGRES_DB=${PostgreDB}
     ports:
-      - "3306:3306"
+      - ${PortDB}:5432
     volumes:
-      - ./backend/src/config/e-todo.sql:/docker-entrypoint-initdb.d/e-todo.sql
-      - mysql_data:/var/lib/mysql
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: phpmyadmin
-    restart: always
-    ports:
-      - "${PMA_PORT:-8081}:80"
-    environment:
-      PMA_HOST: db
-      PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: ${DB_PASSWORD}
-    depends_on:
-      - db
-
-  backend:
-    build: ./backend
-    container_name: backend
-    restart: always
-    ports:
-      - "5000:5000"
-    environment:
-      DB_HOST: db
-      DB_USER: root
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
-    depends_on:
-      - db
-    volumes:
-      - ./backend/src:/app/src
-
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    restart: always
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-    volumes:
-      - ./frontend/src:/app/src
+      - db:/var/lib/postgresql/data
+      - ./backend/database:/docker-entrypoint-initdb.d/:z
 
 volumes:
-  mysql_data:
+  db:

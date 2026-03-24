@@ -1,11 +1,18 @@
-function App() {
-  return (
-    <div className="app-wrapper">
-      <Routes>
+// CSS
+import "./assets/css/App.css"
 
-      </Routes>
-    </div>
-  );
+// Components
+import './components/AddTodo'
+import './components/TodoItem'
+import './components/TodoList'
+
+function App() {
+
+  return (
+    <>
+      <h1>Hello</h1>
+    </>
+  )
 }
 
-export default App;
+export default App

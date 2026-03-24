@@ -9,12 +9,21 @@ import (
 
 func CreateTodoHandler(db *sql.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		rows, err := db.Query("CREATE BY title, description, status FROM todos")
+		
+		var todo models.Todo
+		if err := c.ShouldBindJSON(&todo); err != nil {
+		    c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		    return
+		}
+
+		_, err := db.Exec("INSERT INTO todos (title, description, status) VALUES ($1, $2, $3)", todo.Title, todo.Description, todo.Status)
 		
 		if err != nil {
 		    c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		    return
 		}
+     	      	
+      	c.JSON(http.StatusCreated, todo)
 	}
 }
 
@@ -68,6 +77,23 @@ func GetToDoByIDHandler(db *sql.DB) gin.HandlerFunc {
 func UpdateToDoHandler(db *sql.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		
+		var todo models.Todo
+		if err := c.ShouldBindJSON(&todo); err != nil {
+		    c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		    return
+		}
+		
+		id := c.Param("id")
+
+
+		_, err := db.Exec("UPDATE todos SET title=$1, description=$2, status=$3 WHERE id=$4", todo.Title, todo.Description, todo.Status, id)
+		
+		if err != nil {
+		    c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		    return
+		}
+     	      	
+      	c.JSON(http.StatusOK, todo)
 	}
 }
 

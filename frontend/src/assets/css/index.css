@@ -1,0 +1,37 @@
+:root {
+  --background-color: #f5f7fa;
+  --secondary-color: #50e3c2;
+
+  --button-color: #7986cb;
+  --secondary-button-color: #5c6bc0;
+
+  --border-color: #c5cae9;
+  --secondary-border-color: #7986cb;
+
+  --text-color: white;
+  --secondary-text-color: #333;
+
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+}
+
+dody {
+    
+}
+
+header{
+    
+}
+
+main{
+    
+}
+
+footer{
+    
+}

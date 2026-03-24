@@ -1,17 +1,33 @@
 package main
 
 import (
-  "github.com/gin-gonic/gin"
-  "net/http"
+	"fmt"
+	"os"
+	
+	"todo_api/config"
+	"todo_api/router"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
-  router := gin.Default()
-  router.GET("/", func(c *gin.Context) {
-    c.JSON(http.StatusOK, gin.H{
-      "message": "good",
-    })
-  })
-  router.Run(":8080")
-  
+	
+	godotenv.Load()
+		
+	db := config.ConnectDB()
+	
+	dbHost := os.Getenv("PostgreHost")
+	dbUser := os.Getenv("PostgreUser")
+	dbPassword := os.Getenv("PostgrePassword")
+	dbPort := os.Getenv("PostgrePort")
+	dbName := os.Getenv("PostgreDB")
+
+	fmt.Println("Connect to", dbHost)
+	fmt.Printf("%v est connecté avec le mdps: %v", dbUser, dbPassword)
+	fmt.Printf("Voici le port: %v au nom %v", dbPort, dbName)
+	
+	defer db.Close()
+	
+	router.SetupRouter(db).Run(":8080")
+	
 }

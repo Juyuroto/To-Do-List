@@ -8,7 +8,7 @@ services:
       - POSTGRES_PASSWORD=${PostgrePassword}
       - POSTGRES_DB=${PostgreDB}
     ports:
-      - ${PortDB}:5432
+      - ${PostgrePort}:5432
     volumes:
       - db:/var/lib/postgresql/data
       - ./backend/database:/docker-entrypoint-initdb.d/:z
@@ -22,18 +22,15 @@ services:
     container_name: todo_backend
     restart: always
     ports:
-      - "${BACKEND_PORT}:5000"
+      - "${BACKEND_PORT}:8080"
     environment:
-      NODE_ENV: ${NODE_ENV:-development}
-      DB_USER: ${PostgreUser}
-      DB_HOST: ${Host}
-      DB_NAME: ${PostgreDB}
-      DB_PASSWORD: ${PostgrePassword}
-      DB_PORT: ${PortDB}
-      FRONTEND_URL: ${FRONTEND_URL}
+      - PostgreUser=${PostgreUser}
+      - PostgrePassword=${PostgrePassword}
+      - PostgreDB=${PostgreDB}
+      - PostgrePort=5432
+      - PostgreHost=${PostgreHost}
     depends_on:
-      database:
-        condition: service_healthy
+      - database
     networks:
       - todo_network
 
@@ -51,3 +48,9 @@ services:
       - backend
     networks:
       - todo_network
+
+networks:
+  todo_network:
+    
+volumes:
+  db:

@@ -9,8 +9,8 @@ import (
 )
 
 func ConnectDB() *sql.DB {
-	host := os.Getenv("Host")
-	port := os.Getenv("PortDB")
+	host := os.Getenv("PostgreHost")
+	port := os.Getenv("PostgrePort")
 	user := os.Getenv("PostgreUser")
 	password := os.Getenv("PostgrePassword")
 	dbname := os.Getenv("PostgreDB")

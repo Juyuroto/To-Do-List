@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --background: #F0F8FC;
+    --second-background: #3C94C3;
+    --border: #C8E0EE;
+    --card: #A5CDE3;
+    --font: #060F14;
+    --second-font: #1C435A;
+    --jsp: #3177A0;
+    --padding-card: ;
+}
+
+*{
+    font-family: "Lexend", sans-serif;
+    color: var(--font);
+}
+
+body{
+    background-color: var(--background);
+}
+
+header{
+    text-align: center;
+    align-items: center;
+    font-weight: 900;
+}
+
+main{
+    font-weight: 900;
+}

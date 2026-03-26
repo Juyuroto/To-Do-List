@@ -55,21 +55,25 @@ Récupère une todo par son id.
 
 ### POST `URL`/todos
 Crée une nouvelle todo.
+```json
 Body:
 {
     "title": "Ma todo",
     "description": "Ma description",
     "status": "todo"
 }
+```
 
 ### PUT `URL`/todos/:id
 Modifie une todo existante.
+```json
 Body:
 {
     "title": "Titre modifié",
     "description": "Description modifiée",
     "status": "in_progress"
 }
+```
 
 ### DELETE `URL`/todos/:id
 Supprime une todo par son id.

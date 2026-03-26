@@ -41,3 +41,35 @@ To-Do-List/
 ├─ docker-compose.yml
 └─ README.md
 ```
+
+## Test API
+
+Base URL: `http://localhost:5031`
+:id = l'id de la task (ex: 1)
+
+### GET `URL`/todos
+Récupère toutes les todos.
+
+### GET `URL`/todos/:id
+Récupère une todo par son id.
+
+### POST `URL`/todos
+Crée une nouvelle todo.
+Body:
+{
+    "title": "Ma todo",
+    "description": "Ma description",
+    "status": "todo"
+}
+
+### PUT `URL`/todos/:id
+Modifie une todo existante.
+Body:
+{
+    "title": "Titre modifié",
+    "description": "Description modifiée",
+    "status": "in_progress"
+}
+
+### DELETE `URL`/todos/:id
+Supprime une todo par son id.

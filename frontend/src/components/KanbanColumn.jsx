@@ -1,9 +1,11 @@
-function KandanCol() {
+import { Droppable } from '@hello-pangea/dnd';
+
+function KanbanColumn() {
   return (
     <>
-      <h1>My Todo</h1>
+      <h1>KanbanColumn</h1>
     </>
-  )
+  );
 }
 
-export default KandanCol
+export default KanbanColumn;

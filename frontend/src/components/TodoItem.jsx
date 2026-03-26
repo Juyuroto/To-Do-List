@@ -1,9 +1,11 @@
+import { Draggable } from '@hello-pangea/dnd';
+
 function TodoItem() {
   return (
     <>
-      <h1>Todo Item</h1>
+      <h1>TodoItem</h1>
     </>
-  )
+  );
 }
 
-export default TodoItem
+export default TodoItem;

@@ -1,12 +1,14 @@
+// Import React
 import { useState } from 'react';
   
-// CSS
+// Import CSS
 import "./assets/css/App.css"
 
-// Components
+// Import Components
 import AddTodo from './components/AddTodo'
 import TodoItem from './components/TodoItem'
-import KandanCol from './components/KanbanColumn'
+import KanbanBoard from './components/KanbanBoard'
+import KanbanColumn from './components/KanbanColumn'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,9 +28,9 @@ function App() {
             </div>
           </div>
         )}
-        < AddTodo />
         < TodoItem />
-        < KandanCol />
+        < KanbanBoard />
+        < KanbanColumn />
       </main>
     </>
   )

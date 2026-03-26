@@ -11,7 +11,7 @@ services:
       - ${PostgrePort}:5432
     volumes:
       - db:/var/lib/postgresql/data
-      - ./backend/database:/docker-entrypoint-initdb.d/:z
+      - ./backend/database:/docker-entrypoint-initdb.d/:r
     networks:
       - todo_network
       
@@ -42,6 +42,9 @@ services:
     restart: unless-stopped
     ports:
       - "${FRONTEND_PORT}:5030"
+    volumes:
+      - ./frontend:/app:rw
+
     environment:
       VITE_API_URL: ${VITE_API_URL}
     depends_on:

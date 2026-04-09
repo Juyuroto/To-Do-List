@@ -5,10 +5,12 @@ function TodoItem({ task, index, onTodoDeleted }) {
   const stringId = String(task.id);
 
   const handleDelete = async (e) => {
-      e.stopPropagation(); // Évite que le clic ne soit pris pour un drag
-      if (window.confirm("Supprimer cette tâche ?")) {
+      e.stopPropagation();
+      try {
         await deleteTodo(task.id);
-        onTodoDeleted(task.id);
+        onTodoDeleted(task.id, task.status);
+      } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
       }
     };
   

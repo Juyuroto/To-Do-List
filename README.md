@@ -1,5 +1,19 @@
 # To-Do-List
-### Archi code
+
+Simple et efficace — crée, organise et suis tes tâches en un glisser-déposer.
+
+## Aperçu
+
+### Page vide
+![Page vide](screenshot/1.png)
+
+### Todo créée
+![Todo créée](screenshot/2.png)
+
+### Drag & drop
+![Drag & drop](screenshot/3.png)
+
+## Archi code
 ```markdown
 To-Do-List/
 ├─ backend/
@@ -42,6 +56,22 @@ To-Do-List/
 └─ README.md
 ```
 
+## Stack technique
+
+- **Backend** — Go + Gin
+- **Frontend** — React + Vite + @hello-pangea/dnd
+- **Base de données** — PostgreSQL
+- **Orchestration** — Docker + Docker Compose
+
+## Lancement
+
+```bash
+docker compose up --build
+```
+
+Frontend : `http://localhost:5030`
+Backend : `http://localhost:5031`
+
 ## Test API
 
 Base URL: `http://localhost:5031`
@@ -57,7 +87,6 @@ Récupère une todo par son id.
 ### POST `URL`/todos
 Crée une nouvelle todo.
 ```json
-Body:
 {
     "title": "Ma todo",
     "description": "Ma description",
@@ -68,7 +97,6 @@ Body:
 ### PUT `URL`/todos/:id
 Modifie une todo existante.
 ```json
-Body:
 {
     "title": "Titre modifié",
     "description": "Description modifiée",

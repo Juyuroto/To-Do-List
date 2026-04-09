@@ -12,7 +12,7 @@ func SetupRouter(db *sql.DB) *gin.Engine {
     router := gin.Default()
     router.SetTrustedProxies(nil)
     router.Use(cors.New(cors.Config{
-        AllowOrigins: []string{"http://localhost:5173"},
+        AllowOrigins: []string{"http://localhost:5030"},
         AllowMethods: []string{"GET", "POST", "PUT", "DELETE"},
         AllowHeaders: []string{"Content-Type"},
     }))

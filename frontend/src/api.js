@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080"
+const API_URL = "http://localhost:5031"
 
 export async function getAllTodos() {
     const response = await fetch(`${API_URL}/todos`)

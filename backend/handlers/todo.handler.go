@@ -16,14 +16,19 @@ func CreateTodoHandler(db *sql.DB) gin.HandlerFunc {
 		    return
 		}
 
-		_, err := db.Exec("INSERT INTO todos (title, description, status) VALUES ($1, $2, $3)", todo.Title, todo.Description, todo.Status)
+		var id int
+		err := db.QueryRow(
+		    "INSERT INTO todos (title, description, status) VALUES ($1, $2, $3) RETURNING id",
+		    todo.Title, todo.Description, todo.Status,
+		).Scan(&id)
 		
 		if err != nil {
 		    c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		    return
 		}
-     	      	
-      	c.JSON(http.StatusCreated, todo)
+		
+		todo.Id = id
+		c.JSON(http.StatusCreated, todo)
 	}
 }
 
@@ -39,7 +44,7 @@ func GetAllTodosHandler(db *sql.DB) gin.HandlerFunc {
 		
 		defer rows.Close()
 		
-		var todos []models.Todo
+		todos := []models.Todo{}
 
 		for rows.Next() {
 		    var todo models.Todo
@@ -84,7 +89,6 @@ func UpdateToDoHandler(db *sql.DB) gin.HandlerFunc {
 		}
 		
 		id := c.Param("id")
-
 
 		_, err := db.Exec("UPDATE todos SET title=$1, description=$2, status=$3 WHERE id=$4", todo.Title, todo.Description, todo.Status, id)
 		

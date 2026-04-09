@@ -1,7 +1,7 @@
 import { Droppable } from '@hello-pangea/dnd';
 import TodoItem from './TodoItem';
 
-export default function KanbanColumn({ title, id, tasks }) {
+export default function KanbanColumn({ title, id, tasks, onTodoDeleted }) {
   return (
     <div className="column">
       <h3>{title}</h3>
@@ -17,6 +17,7 @@ export default function KanbanColumn({ title, id, tasks }) {
                 key={task.id}
                 task={task} 
                 index={index} 
+                onTodoDeleted={onTodoDeleted} 
               />
             ))}
             {provided.placeholder}

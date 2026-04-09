@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import { createTodo } from '../api';
 
 export default function AddTodo({ onTodoAdded }) {
-  const [val, setVal] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!val.trim()) return;
+    if (!title.trim()) return;
 
-    const res = await createTodo({ title: val, status: "todo" });
+    const res = await createTodo({ title: title, description: desc, status: "todo" });
     onTodoAdded(res);
-    setVal("");
+    setTitle("");
+    setDesc("");
   };
 
   return (
     <form onSubmit={submit} className="add-todo-form">
-      <input 
-        value={val} 
-        onChange={e => setVal(e.target.value)} 
-        placeholder="Quoi de neuf ?" 
-      />
+      <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Titre..." />
+      <input value={desc} onChange={e => setDesc(e.target.value)} placeholder="Description..." />
       <button type="submit">Ajouter</button>
     </form>
   );

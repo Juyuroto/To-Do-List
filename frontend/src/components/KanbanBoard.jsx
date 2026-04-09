@@ -52,9 +52,6 @@ export default function KanbanBoard() {
       await updateTodo(draggableId, updatedTodo)
     }
     
-    const updatedTodo = { ...movedItem, status: end };
-    console.log("Envoi à l'API:", draggableId, updatedTodo);
-    await updateTodo(draggableId, updatedTodo);
   };
 
   const onTodoAdded = (newTodo) => {
@@ -62,15 +59,23 @@ export default function KanbanBoard() {
     const todoWithId = { ...newTodo, id: String(newTodo.id) };
     setTasks(prev => ({ ...prev, todo: [...prev.todo, todoWithId] }));
   };
+  
+  const onTodoDeleted = (id) => {
+    setTasks(prev => ({
+      todo: prev.todo.filter(t => String(t.id) !== String(id)),
+      in_progress: prev.in_progress.filter(t => String(t.id) !== String(id)),
+      done: prev.done.filter(t => String(t.id) !== String(id))
+    }))
+  };
 
   return (
     <div className="kanban-wrapper">
       <AddTodo onTodoAdded={onTodoAdded} />
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="board">
-          <KanbanColumn title="À faire" id="todo" tasks={tasks.todo} />
-          <KanbanColumn title="En cours" id="in_progress" tasks={tasks.in_progress} />
-          <KanbanColumn title="Terminé" id="done" tasks={tasks.done} />
+          <KanbanColumn title="À faire" id="todo" tasks={tasks.todo} onTodoDeleted={onTodoDeleted}/>
+          <KanbanColumn title="En cours" id="in_progress" tasks={tasks.in_progress} onTodoDeleted={onTodoDeleted}/>
+          <KanbanColumn title="Terminé" id="done" tasks={tasks.done} onTodoDeleted={onTodoDeleted}/>
         </div>
       </DragDropContext>
     </div>
